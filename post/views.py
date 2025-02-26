@@ -7,8 +7,6 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Post, Rating
 from .permissions import IsOwnerOrIsStaffOrReadOnly
 from .serializers import PostListSerializer, PostCreateSerializer, RateSerializer
-from rest_framework import mixins
-from .mixins import AllowPUTAsCreateMixin
 
 
 class PostListAPIView(generics.ListAPIView):
