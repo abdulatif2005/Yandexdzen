@@ -15,8 +15,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path, include
+from djoser.views import UserViewSet, TokenCreateView, TokenDestroyView
+from users.views import UserListAPIView
+from post.views import PostListAPIView, PostCreateAPIView, PostRetrieveAPIView, RatePostAPIView
+from comment.views import CommentCreateAPIView, CommentListAPIView, CommentUpdateDestroyAPIView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/account/register/', UserViewSet.as_view({"post": "create"})),
+    path('api/account/', UserListAPIView.as_view()),
+    path('api/login/', TokenCreateView.as_view()),
+    path('api/logout/', TokenDestroyView.as_view()),
+    path('api/post/', PostListAPIView.as_view()),
+    path('api/post/add/', PostCreateAPIView.as_view()),
+    path('api/post/<int:post_id>/', PostRetrieveAPIView.as_view()),
+    path('api/post/<int:post_id>/mark/add/', RatePostAPIView.as_view()),
+    path('api/post/<int:post_id>/comment/', CommentListAPIView.as_view()),
+    path('api/post/<int:post_id>/comment/add/', CommentCreateAPIView.as_view()),
+    path('api/comment/<int:comment_id>/', CommentUpdateDestroyAPIView.as_view())
 ]
