@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/account/register/', UserViewSet.as_view({"post": "create"})),
     path('api/account/', UserListAPIView.as_view()),
-    path('api/login/', TokenCreateView.as_view()),
+    path('api/account/token/', TokenCreateView.as_view()),
     path('api/logout/', TokenDestroyView.as_view()),
     path('api/post/', PostListAPIView.as_view()),
     path('api/post/add/', PostCreateAPIView.as_view()),
