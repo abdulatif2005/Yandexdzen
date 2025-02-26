@@ -27,5 +27,9 @@ class User(AbstractUser):
         validators=[
             TgUsernameValidator(),
             MinLengthValidator(limit_value=5),
-    ])
+        ], blank=True
+    )
+
+    REQUIRED_FIELDS = ["email"]
+
 
