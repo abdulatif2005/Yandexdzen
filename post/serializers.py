@@ -14,6 +14,7 @@ class PostCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ["id", "title", "content", "created_at", "user"]
+        read_only_fields = ['user']
 
 
 class RateSerializer(serializers.ModelSerializer):

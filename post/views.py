@@ -21,8 +21,8 @@ class PostCreateAPIView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-
-        serializer.save()
+        user = self.request.user
+        serializer.save(user=user)
 
 
 class PostRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
